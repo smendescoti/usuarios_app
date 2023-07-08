@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-criarconta',
@@ -16,7 +17,8 @@ export class CriarcontaComponent {
 
   //construtor
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private spinner: NgxSpinnerService
   ) {
   }
 
@@ -41,6 +43,8 @@ export class CriarcontaComponent {
   //função para capturar o SUBMIT do formulário
   onSubmit(): void {
 
+    this.spinner.show();
+
     //limpar os valores das variáveis
     this.mensagem_sucesso = '';
     this.mensagem_erro = '';
@@ -61,6 +65,8 @@ export class CriarcontaComponent {
           //exibir mensagem de erro na página
           this.mensagem_erro = e.error.mensagem;
         }
+      }).add(() => {
+        this.spinner.hide();
       })
   }
 

@@ -8,6 +8,8 @@ import { CriarcontaComponent } from './criarconta/criarconta.component';
 import { RecuperarsenhaComponent } from './recuperarsenha/recuperarsenha.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 //mapeamento das rotas do projeto
 const routes: Routes = [
@@ -29,7 +31,9 @@ const routes: Routes = [
     FormsModule, //formulários reativos
     ReactiveFormsModule, //formulários reativos
     HttpClientModule, //biblioteca para requisições HTTP
-    RouterModule.forRoot(routes) //registrando as rotas do projeto
+    RouterModule.forRoot(routes), //registrando as rotas do projeto
+    NgxSpinnerModule, //registrando a biblioteca spinner
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
